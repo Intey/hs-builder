@@ -18,4 +18,7 @@ For test purposes. Running `make` just runs the `Task1Spec.hs` with `UserTask1So
 ```sh
 stack script --resolver lts-23.0 --package hspec --silent Task1Spec.hs
 ```
-you can customize resolver in Makefile - change the docker build-arg to something like `RESOLVER=lts-23.5`.
+You can customize resolver in Makefile - change the docker build-arg to
+something like `RESOLVER=lts-23.5`. Then just remove .image.timestamp (build
+optimization file) and run `make`.
+If you want check another file - run `make TESTNAME=$FILENAME` 
