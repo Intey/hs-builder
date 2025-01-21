@@ -2,9 +2,8 @@ IMAGENAME ?= hs-builder
 
 .PHONY: test
 
-test: .image.timestamp
+test: image
 	@docker run -it --rm -v.:/build ${IMAGENAME} /build/Task1Spec.hs -- -f specdoc
 
-.image.timestamp: Dockerfile
-	docker build --rm -t ${IMAGENAME} .
-	@touch .image.timestamp
+image: Dockerfile
+	@docker build --rm -t ${IMAGENAME} . --build-arg=RESOLVER=lts-23.0

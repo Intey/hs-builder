@@ -1,5 +1,5 @@
 FROM haskell:9
-ENV RESOLVER=lts-23.0
+ARG RESOLVER=lts-23.0
 RUN stack install --install-ghc --resolver ${RESOLVER} hspec
 
 # inject it there, to control RESOLVER in one file
